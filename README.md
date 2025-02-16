@@ -44,4 +44,4 @@ npm run dev
 
 The command `npm run build` will generate a copy of the site files in a `_site` directory, which you can deploy with any hosting service.
 
-&copy; 2020 by [Church of the Nazarene in the Loop](https://github.com/loopnaz/)
+&copy; 2025 by [Church of the Nazarene in the Loop](https://github.com/loopnaz/)
