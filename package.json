@@ -1,0 +1,23 @@
+{
+  "name": "loopnaz.org",
+  "version": "2.0.0",
+  "description": "Website for the Church of the Nazarene in the Loop",
+  "homepage": "https://github.com/loopnaz/loopnaz.org#readme",
+  "bugs": {
+    "url": "https://github.com/loopnaz/loopnaz.org/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loopnaz/loopnaz.org.git"
+  },
+  "license": "MIT",
+  "author": "Reuben L. Lillie",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
