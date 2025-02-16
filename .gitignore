@@ -1,0 +1,5 @@
+# Install npm modules
+node_modules/
+
+# Eleventy output files
+_site/
