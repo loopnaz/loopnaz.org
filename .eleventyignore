@@ -1,0 +1,3 @@
+# Eleventy will not process these files (or globs)
+# @see https://www.11ty.dev/docs/ignores/
+./**/README.md
