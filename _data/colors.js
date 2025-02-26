@@ -20,6 +20,13 @@
  * @see {@link https://www.11ty.dev/docs/data-global/ Global data files in Eleventy}
  */
 export default {
+  white: {
+    100: {
+      cmyk: [0, 0, 0, 0],
+      hex: '#ffffff',
+      rgb: [255, 255, 255]
+    }
+  },
   // Denominational seal colors
   black: {
     900: {
