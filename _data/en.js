@@ -21,6 +21,8 @@ export default {
   siteName: 'Church of the Nazarene in the Loop',
   // The site tagline
   tagline: 'Let’s serve the heart of Chicago',
+  // Logo description used in SVG `<title>` tags and image `alt` attributes
+  logoAlt: 'Chicago star emblazoned with a flaming dove alighting on an open Bible',
 
   /* User interface */
 
