@@ -16,25 +16,26 @@ export function render(data) {
   /** @type {Object} Destructured template data */
   var {
     i18n: {defaultLanguage},
+    lang,
     page,
     title
   } = data
 
   /** @type {Object} Localized strings, for example, in `_data/en.js` */
-  var locale = data[page.lang]
+  var locale = data[lang]
 
   /** @type {Object} Destructure localized screen reader template strings */
   var {screenReader} = locale
 
   /** @type {string} Is the current content in the default language? */
-  var home = page.lang === defaultLanguage.tag
+  var home = lang === defaultLanguage.tag
     /*
      * Then exclude the language tag to link back to the home page
      * @see {@link https://www.11ty.dev/docs/i18n/#content-negotiation Content negotiation in Eleventy}
      */
     ? '/'
     // Otherwise, specify that translation’s home page in the URL (e.g., `/es/`)
-    : this.locale_url('/', page.lang)
+    : this.locale_url('/', lang)
 
   /** @type {string} Does the page have a specified title? */
   title = title
@@ -75,9 +76,9 @@ export function render(data) {
          hreflang="${lang}">${label} (${locale.languages[lang]})</a>
     </li>`
 
-  return `<!--_layouts/base.11ty.js-->
+  return `<!--./_layouts/base.11ty.js-->
 <!DOCTYPE html>
-<html lang="${page.lang}-${defaultLanguage.subtag}" dir="${data.dir}">
+<html lang="${lang}-${defaultLanguage.subtag}" dir="${data.dir}">
   <head>
     <title>${title}</title>
     <meta charset="utf-8">
@@ -89,6 +90,7 @@ export function render(data) {
       ${languageSwitcher(this.locale_links(page.url), screenReader.selectLanguage)}
     </header>
     <main id="main" tabindex="-1">
+      <!--${page.inputPath}-->
       ${data.content}
     </main>
   </body>
