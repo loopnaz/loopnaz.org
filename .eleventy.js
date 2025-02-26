@@ -35,13 +35,3 @@ export default eleventyConfig => {
     defaultLanguage: tag
   })
 }
-
-/**
- * Use Markdown inside JavaScript template files
- * @see {@link https://www.11ty.dev/docs/config/#default-template-engine-for-markdown-files Default template engine for Markdown files}
- * @see {@link https://www.11ty.dev/docs/config-shapes/#optional-export-config-object Configuration shapes}
- */
-export var config = {
-  htmlTemplateEngine: '11ty.js',
-  markdownTemplateEngine: '11ty.js'
-}
