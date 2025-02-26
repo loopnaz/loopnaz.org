@@ -21,6 +21,8 @@ export default {
   siteName: 'Iglesia del Nazareno en el Loop',
   // La lema del sitio
   tagline: 'Sirvamos al corazón de Chicago',
+  // Logo description used in SVG `<title>` tags and image `alt` attributes
+  logoAlt: 'Estrella de Chicago blasonada con una paloma en llamas que posada sobre una Biblia abierta',
 
   /* Interfaz de usuario */
 
