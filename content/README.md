@@ -9,7 +9,7 @@ Eleventy offers a variety of templating options. This project uses two:
 1. [Markdown](https://www.11ty.dev/docs/languages/markdown/) (ending with `*.md`) for basic pages and posts
 2. [JavaScript](https://www.11ty.dev/docs/languages/javascript/) (ending with `*.11ty.js`) for added functionality
 
-[Markdown is also available inside JavaScript templates](https://www.11ty.dev/docs/languages/javascript/#markdown-and-java-script). Thanks to [`markdownTemplateEngine`](https://www.11ty.dev/docs/config/#default-template-engine-for-markdown-files) in `.eleventy.js`, there’s no need to use `templateEngineOverride` within `*.11ty.js` files.
+[Markdown is also available inside JavaScript templates](https://www.11ty.dev/docs/languages/javascript/#markdown-and-java-script).
 
 Instead of JavaScript classes, this project prefers separate exports for Eleventy’s [`data` and `render` methods](https://www.11ty.dev/docs/languages/javascript/#optional-data-method), most often treating `data` as an object. Among other reasons, this format helps reduce indentation and repetition. For example:
 
@@ -20,7 +20,8 @@ Instead of JavaScript classes, this project prefers separate exports for Elevent
 
 /** @type {Object} Acts as front matter in JavaScript templates */
 export var data = {
-  title: 'Example JavaScript Template in Eleventy'
+  title: 'Example JavaScript Template in Eleventy',
+  templateEngineOverride: '11ty.js, md'
 }
 
 /**
