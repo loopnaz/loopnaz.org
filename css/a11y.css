@@ -1,0 +1,45 @@
+/**
+ * @file Defines CSS for accessiblity (a11y)
+ * @author Reuben L. Lillie <rlillie@loopnaz.org>
+ * @since 2.0.0
+ */
+
+/**
+ * Screen readers
+ */
+
+/*
+ * Hide content visually, but keep it available to screen readers
+ * @see Jonathan Snook, “Hiding Content for Accessibility,” (February 25, 2011), https://snook.ca/archives/html_and_css/hiding-content-for-accessibility.
+ *
+ * NB, For long content, line feeds are not interpreted as spaces
+ * and small widths cause content to wrap one word per line
+ * @see J. Renée Beach, “Beware Smushed Off-Screen Accessible Text,” _Medium_ (October 11, 2016), https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe.
+ * @see Chris Ferdinand, “Hidden Content for Better A11y,” _Go Make Things_ (April 11, 2016), https://gomakethings.com/hidden-content-for-better-a11y/.
+ */
+.screen-reader {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/*
+ * Reveal elements to screen readers on focus
+ * @see Drupal forums, “Make .element-invisible Work for Focusable Elements Like Links” (January 3, 2014), https://www.drupal.org/node/897638.
+ */
+.screen-reader-focusable:active,
+.screen-reader-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
