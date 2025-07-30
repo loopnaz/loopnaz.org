@@ -75,4 +75,5 @@ export default async eleventyConfig => {
    * @see {@link https://www.11ty.dev/docs/copy/ Passtrough files in Eleventy}
    */
   eleventyConfig.addPassthroughCopy('favicons')
+  eleventyConfig.addPassthroughCopy('fonts')
 }

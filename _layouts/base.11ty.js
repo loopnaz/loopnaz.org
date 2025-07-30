@@ -1,11 +1,18 @@
 /**
- * @file Defines the base template to reduce repitition
+ * @file Defines the base template to reduce repetition
  * @author Reuben L. Lillie <rlillie@loopnaz.org>
  * @since 2.0.0
  * @see {@link https://www.11ty.dev/docs/languages/javascript/#function JavaScript functions as templates in Eleventy}
  * @see {@link https://www.11ty.dev/docs/data/ Using data in Eleventy}
  * @see {@link https://www.11ty.dev/docs/layout-chaining/ Layout chaining in Eleventy}
  */
+
+/** @type {Object} Acts as front matter data in JavaScript templates */
+export var data = {
+  /** @type {string} File path for favicon markup */
+  faviconPath: 'favicons/html_code.html',
+  fontScript: 'js/fonts.js'
+}
 
 /**
  * Wrap other templates with this base template
@@ -15,6 +22,8 @@
 export function render(data) {
   /** @type {Object} Destructured template data */
   var {
+    faviconPath,
+    fontScript,
     i18n: {defaultLanguage},
     lang,
     page,
@@ -83,6 +92,41 @@ export function render(data) {
     <title>${title}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial scale=1.0">
+    ${this.fileExists(faviconPath)
+      ? `<!--favicons-->
+        ${this.fileToString(faviconPath)}`
+      : `<!--No favicon markup at ${faviconPath}-->`
+    }
+    <!-- Preload HTML for font loading first stage-->
+    <link rel="preload" href="fonts/lato/Lato-Bold-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/lato/Lato-Regular-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* CSS for font loading first stage */
+    @font-face {
+      font-family: Lato;
+      src: local('Lato'),
+        url(/fonts/lato/Lato-Bold-kern-latin.woff2) format("woff2");
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+        font-family: Lato;
+        src: local('Lato'),
+          url(/fonts/lato/Lato-Regular-kern-latin.woff2) format("woff2");
+        font-weight: 400;
+        font-display: swap;
+    }
+    html {
+      font-family: Lato;
+    }
+  </style>
+  ${this.fileExists(fontScript)
+    ? `<!--JavaScript for font loading second stage-->
+      <script>
+        ${this.fileToString(fontScript)}
+      </script>`
+    : `<!--No file at ${fontScript}-->`
+  }
   </head>
   <body>
     <header>
