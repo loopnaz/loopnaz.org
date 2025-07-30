@@ -74,6 +74,7 @@ export default async eleventyConfig => {
    * Copy files directly to Eleventy output
    * @see {@link https://www.11ty.dev/docs/copy/ Passtrough files in Eleventy}
    */
+  eleventyConfig.addPassthroughCopy('admin')
   eleventyConfig.addPassthroughCopy('favicons')
   eleventyConfig.addPassthroughCopy('fonts')
 }

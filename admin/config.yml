@@ -1,0 +1,38 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: Create {{collection}} “{{slug}}”
+    update: Update {{collection}} “{{slug}}”
+    delete: Delete {{collection}} “{{slug}}”
+    uploadMedia: Upload “{{path}}”
+    deleteMedia: Delete “{{path}}”
+    openAuthoring: '{{message}}'
+publish_mode: editorial_workflow
+locale: 'en'
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: loopnaz
+    api_key: 649533274288737
+i18n:
+  structure: multiple_folders
+  locales: [en, es]
+  default_locale: en
+collections:
+  - name: "English"
+    label: "English"
+    folder: "content/en"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
+      - { label: "Slug", name: "slug", widget: "string", required: true, i18n: true }
+  - name: "Spanish"
+    label: "Español"
+    folder: "content/es"
+    create: true
+    fields:
+      - { label: "Título", name: "title", widget: "string", i18n: true }  # Translated label
+      - { label: "Cuerpo", name: "body", widget: "markdown", i18n: true }  # Translated label
+      - { label: "Slug", name: "slug", widget: "string", required: true, i18n: true } 
