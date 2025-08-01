@@ -9,6 +9,7 @@ backend:
     deleteMedia: Delete “{{path}}”
     openAuthoring: '{{message}}'
 publish_mode: editorial_workflow
+logo_url: https://loopnaz.netlify.app/img/en/logo.svg
 locale: 'en'
 media_library:
   name: cloudinary
