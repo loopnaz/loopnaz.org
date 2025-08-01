@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: loopnaz/loopnaz.org
+  name: git-gateway
   branch: main
   commit_messages:
     create: Create {{collection}} “{{slug}}”
