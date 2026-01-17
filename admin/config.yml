@@ -36,4 +36,4 @@ collections:
     fields:
       - { label: "Título", name: "title", widget: "string", i18n: true }  # Translated label
       - { label: "Cuerpo", name: "body", widget: "markdown", i18n: true }  # Translated label
-      - { label: "Slug", name: "slug", widget: "string", required: true, i18n: true } 
+      - { label: "Slug", name: "slug", widget: "string", required: true, i18n: true }
