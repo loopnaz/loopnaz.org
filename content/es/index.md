@@ -1,6 +1,8 @@
 ---
 title: ¡Bienvenido al barrio!
-permalink: /es/
+lang: es
+eleventyComputed:
+  permalink: /es/
 ---
 
 Español

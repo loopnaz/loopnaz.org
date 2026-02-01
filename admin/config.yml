@@ -1,5 +1,17 @@
+# Configure Decap CMS for editing site content in the browser instead of Git
+
+# Test Decap CMS locally without making commits to a published Git repo
+# @see https://decapcms.org/docs/working-with-a-local-git-repository/#docs-nav-content
+#
+local_backend: true
+
+# Allow Decap CMS to communicate with Git
+# @see https://decapcms.org/docs/backends-overview/#backend-configuration
 backend:
+  # Use Netlify to add editors without needing Git access
+  # @see https://decapcms.org/docs/git-gateway-backend/
   name: git-gateway
+  # Git branch where published content is stored
   branch: main
   commit_messages:
     create: Create {{collection}} “{{slug}}”
@@ -8,32 +20,244 @@ backend:
     uploadMedia: Upload “{{path}}”
     deleteMedia: Delete “{{path}}”
     openAuthoring: '{{message}}'
+  squash_merges: true
+
+# Review and approve drafts before publishing them
+# this line should *not* be indented
+# @see https://decapcms.org/docs/configuration-options/#publish-mode
 publish_mode: editorial_workflow
-logo_url: https://loopnaz.netlify.app/img/en/logo.svg
+
+# Change the logo displayed on the Decap CMS login page
+# @see https://decapcms.org/docs/configuration-options/#custom-logo
+logo:
+  src: https://loopnaz.netlify.app/img/en/logo.svg
+  show_in_header: true
+
+# The CMS locale
+# @see https://decapcms.org/docs/configuration-options/#locale
 locale: 'en'
+
+# Use the Cloudinary to upload images and videos
+# @see https://decapcms.org/docs/cloudinary/#connecting-cloudinary-to-decap-cms
 media_library:
   name: cloudinary
   config:
     cloud_name: loopnaz
     api_key: 649533274288737
+
+# Internationalization - support for multiple languages
+# @see https://decapcms.org/docs/i18n/
 i18n:
+  # Required - persists files in `<folder>/<locale>/<slug>.<extension>`
   structure: multiple_folders
+  # Required - a list of locale tags to show in the CMS editor
   locales: [en, es]
+  # Optional - locale used for fields validation and entry
   default_locale: en
+
+# Organize collections by directory
+# @see https://decapcms.org/docs/collection-folder/
 collections:
-  - name: "English"
-    label: "English"
-    folder: "content/en"
+  # Pages - content that doesn’t change a lot
+  - label: Pages
+    label_singular: Page
+    name: pages
+    folder: content/pages/
     create: true
+    i18n: true
     fields:
-      - { label: "Title", name: "title", widget: "string", i18n: true }
-      - { label: "Body", name: "body", widget: "markdown", i18n: true }
-      - { label: "Slug", name: "slug", widget: "string", required: true, i18n: true }
-  - name: "Spanish"
-    label: "Español"
-    folder: "content/es"
+      # - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - { label: 'Title', name: 'title', widget: 'string', i18n: true }
+      - label: Slug
+        name: slug
+        widget: 'string'
+        required: true
+        i18n: true
+        pattern: ['^[a-z0-9\s-]*$', 'lowercase-words-separated-by-hyphens']
+      - label: Date
+        name: date
+        widget: datetime
+        default: '{{now}}'
+        format: 'LL'
+        picker_utc: true
+      - label: Body
+        name: body
+        widget: markdown
+        required: false
+        i18n: true
+      - label: Navigation
+        name: nav
+        widget: object
+        summary: '{{fields.name}}: {{fields.order}}'
+        collapsed: true
+        fields:
+          - label: Menu location
+            name: menu
+            widget: select
+            options:
+              - { label: 'Main', value: 'main' }
+              - { label: 'Footer 1', value: 'footer_1' }
+              - { label: 'Footer 2', value: 'footer_2' }
+              - { label: 'Footer 3', value: 'footer_3' }
+          - label: Menu order
+            name: order
+            widget: number
+            value_type: float
+            min: -10000
+            max: 10000
+        # Internationalized using _data/tags.js
+      - label: Tags
+        label_singular: Tag
+        name: tags
+        widget: select
+        multiple: true
+        i18n: duplicate
+        options: ['policies', 'discipleship', 'missions', 'youth', 'adults', 'children', 'local', 'district', 'global']
+      - label: 'Cover photo'
+        name: image
+        widget: object
+        required: false
+        i18n: true
+        fields:
+          - label: 'Alt text'
+            name: alt
+            widget: string
+            default: ''
+            i18n: true
+          - label: Image
+            name: src
+            widget: image
+            choose_url: true
+  # Posts - content that can change or be added to over time
+  - label: Posts
+    label_singular: Post
+    name: posts
+    folder: content/posts/
     create: true
+    i18n: true
     fields:
-      - { label: "Título", name: "title", widget: "string", i18n: true }  # Translated label
-      - { label: "Cuerpo", name: "body", widget: "markdown", i18n: true }  # Translated label
-      - { label: "Slug", name: "slug", widget: "string", required: true, i18n: true }
+      # - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - { label: 'Title', name: 'title', widget: 'string', i18n: true }
+      - label: Slug
+        name: slug
+        widget: 'string'
+        required: true
+        i18n: true
+        pattern: ['^[a-z0-9\s-]*$', 'lowercase-words-separated-by-hyphens']
+      - label: Author(s)
+        name: author
+        widget: relation
+        collection: people
+        value_field: '{{slug}}'
+        search_fields: ['name.first', 'name.last', 'role', 'slug']
+        multiple: true
+        display_fields: ['{{name.first}} {{name.last}}, {{role}}']
+      - label: Date
+        name: date
+        widget: datetime
+        default: '{{now}}'
+        date_format: 'MMMM DD, YYYY'
+        picker_utc: true
+      - label: Body
+        name: body
+        widget: markdown
+        required: false
+        i18n: true
+        # Internationalized using _data/tags.js
+      - label: Tags
+        label_singular: Tag
+        name: tags
+        widget: select
+        required: false
+        multiple: true
+        i18n: duplicate
+        options: ['discipleship', 'missions', 'youth', 'adults', 'children', 'local', 'district', 'global']
+      - label: 'Cover photo'
+        name: image
+        widget: object
+        required: false
+        i18n: true
+        fields:
+          - label: 'Alt text'
+            name: alt
+            widget: string
+            default: ''
+            i18n: true
+          - label: Image
+            name: src
+            widget: image
+            choose_url: true
+  # People - profile info for staff, board members, and other people
+  - label: People
+    label_singular: Person
+    name: people
+    folder: content/people/
+    create: true
+    i18n: true
+    identifier_field: name.display
+    fields:
+      # - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - label: Name
+        name: name
+        widget: object
+        summary: '{{fields.name.first}} {{fields.name.last}}'
+        fields:
+          - label: First name
+            name: first
+            widget: string
+            required: true
+            pattern: ['^[a-zA-Z0-9\s.,’-]*$', 'First name']
+          - label: Last name
+            name: last
+            widget: string
+            required: true
+            pattern: ['^[a-zA-Z0-9\s.,’-]*$', 'Last name']
+          - label: Display name
+            name: display
+            widget: string
+            required: true
+            pattern: ['^[a-zA-Z0-9\s.,’-]*$', 'First and last name']
+      - label: Slug
+        name: slug
+        widget: 'string'
+        required: true
+        i18n: duplicate
+      - label: Role
+        name: role
+        widget: string
+        required: false
+        i18n: true
+        pattern: ['^[a-zA-Z0-9\s.,’-&]*$', 'Office title or position']
+      - label: Email
+        name: email
+        widget: string
+        required: true
+        pattern: ['^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$', 'you@example.com']
+      - label: Bio
+        name: bio
+        widget: markdown
+        required: false
+        i18n: true
+        # Internationalized using _data/tags.js
+      - label: Tags
+        label_singular: Tag
+        name: tags
+        widget: select
+        multiple: true
+        i18n: duplicate
+        options: ['staff', 'pastor', 'board', 'volunteer']
+      - label: Headshot
+        name: image
+        widget: object
+        required: false
+        i18n: true
+        fields:
+          - label: 'Alt text'
+            name: alt
+            widget: string
+            default: ''
+            i18n: true
+          - label: Image
+            name: src
+            widget: image
+            choose_url: true

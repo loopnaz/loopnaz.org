@@ -7,7 +7,7 @@
 
 /**
  * Datos del directorio en español
- * @module content/es
+ * @module img/es
  * @see _data/es
  */
 export default {
@@ -15,5 +15,10 @@ export default {
    * Etiquetas de idioma BCP 47
    * @see {@link https://www.langtag.net/ Registro de etiquetas de idioma}
    * */
-  lang: 'es'
+  lang: 'es',
+  /**
+   * Direccionalidad del texto
+   * @see {@link https://developer.mozilla.org/es-US/docs/Web/HTML/Global_attributes/dir `dir` a MDN}
+   */
+  dir: 'ltr'
 }

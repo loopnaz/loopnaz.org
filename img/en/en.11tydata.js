@@ -7,7 +7,7 @@
 
 /**
  * Directory data for English
- * @module content/en
+ * @module img/en
  * @see _data/en
  */
 export default {
@@ -22,4 +22,3 @@ export default {
    */
   dir: 'ltr'
 }
-

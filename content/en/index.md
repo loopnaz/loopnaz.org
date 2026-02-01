@@ -1,6 +1,7 @@
 ---
 title: Welcome to the neighborhood!
-permalink: /
+eleventyComputed:
+  permalink: /
 ---
 
 English
