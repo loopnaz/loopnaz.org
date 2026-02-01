@@ -17,6 +17,8 @@ export default {
 
   /* Identidad */
 
+  // El/la propietario/a del sitio (utilizada en el aviso de derechos de autor)
+  siteOwner: 'Iglesia del Nazarene en el Loop',
   // El nombre del sitio
   siteName: 'Iglesia del Nazareno en el Loop',
   // La lema del sitio

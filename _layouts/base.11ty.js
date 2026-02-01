@@ -26,6 +26,7 @@ export function render(data) {
     fontScript,
     i18n: {defaultLanguage},
     lang,
+    meta: {copyright},
     page,
     title
   } = data
@@ -84,7 +85,6 @@ export function render(data) {
          lang="${lang}"
          hreflang="${lang}">${label} (${locale.languages[lang]})</a>
     </li>`
-
   return `<!--./_layouts/base.11ty.js-->
 <!DOCTYPE html>
 <html lang="${lang}-${defaultLanguage.subtag}" dir="${data.dir}">
@@ -137,6 +137,9 @@ export function render(data) {
       <!--${page.inputPath}-->
       ${data.content}
     </main>
+    <footer>
+      &copy; ${copyright.year} ${locale.siteOwner}
+    </footer>
   </body>
 </html>`
 }

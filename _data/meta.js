@@ -13,5 +13,10 @@ export default {
   // The base URL for the site, but without a trailing slash
   baseUrl: 'https://loopnaz.org',
   // The domain name without the protocol or extension (used for name spacing)
-  domain: 'loopnaz'
+  domain: 'loopnaz',
+  // Copyright information
+  copyright: {
+    // The current year
+    year: new Date().getFullYear()
+  }
 }

@@ -17,6 +17,8 @@ export default {
 
   /* Identity */
 
+  // The owner of the site (used in copyright notice)
+  siteOwner: 'Church of the Nazarene in the Loop',
   // The name of the site
   siteName: 'Church of the Nazarene in the Loop',
   // The site tagline
