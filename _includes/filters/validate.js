@@ -1,5 +1,5 @@
 /**
- * @file Defines a module to format hyphenated text camel case
+ * @file Defines a module to validate data according to specified type(s)
  * @author Reuben L. Lillie <rlillie@loopnaz.org>
  */
 
