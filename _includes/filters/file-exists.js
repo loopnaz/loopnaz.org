@@ -1,6 +1,6 @@
 /**
  * @file Defines a module to check if a file exists
- * @author Reuben L. Lillie <reuben@earnsavegive.co>
+ * @author Reuben L. Lillie <rlillie@loopnaz.org>
  */
 
 // Import Node.js native fs module for interacting with the file system
@@ -9,7 +9,7 @@ import {existsSync} from 'fs'
 /**
  * Check if a file exists
  * @module _includes/filters/file-exists
- * @since 0.1.0
+ * @since 2.0.0
  * @return {string} The file’s contents
  * @see {@link `fs.existsSync(path) in Node.js`}
  * @example

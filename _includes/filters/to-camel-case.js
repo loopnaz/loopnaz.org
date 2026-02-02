@@ -1,6 +1,6 @@
 /**
  * @file Defines a module to format hyphenated text camel case
- * @author Reuben L. Lillie <reuben@earnsavegive.co>
+ * @author Reuben L. Lillie <rlillie@loopnaz.org>
  */
 
 // Import native Node.js modules
@@ -9,8 +9,8 @@ import {parse} from 'path'
 /**
  * Convert a hyphenated string to camel case
  * @module _includes/filters/to-camel-case
- * @since 0.1.0
- * @param {string} string A hyphenated string (e.g., file-name.js)
+ * @since 2.0.0
+ * @param {string} str A hyphenated string (e.g., file-name.js)
  * @return {string} camelCase (e.g. fileName)
  * @see {@link https://nodejs.org/api/path.html#pathparsepath Node.js `path.parse(path)`}
  */

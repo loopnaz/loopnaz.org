@@ -1,6 +1,6 @@
 /**
  * @file Defines a module to minify CSS
- * @author Reuben L. Lillie <reuben@earnsavegive.co>
+ * @author Reuben L. Lillie <rlillie@loopnaz.org>
  */
 
 /*
@@ -12,7 +12,7 @@ import CleanCSS from 'clean-css'
 /**
  * Minify CSS
  * @module _includes/filters/minify-css
- * @since 0.1.0
+ * @since 2.0.0
  * @param {string} stylesheet A raw stylesheet
  * @return {string} The minified stylesheet
  * @see {@link https://github.com/jakubpawlowicz/clean-css#minify-method clean-css on GitHub}
