@@ -65,6 +65,7 @@ collections:
     folder: content/pages/
     create: true
     i18n: true
+    identifier_field: slug
     fields:
       # - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
       - { label: 'Title', name: 'title', widget: 'string', i18n: true }
@@ -78,7 +79,7 @@ collections:
         name: date
         widget: datetime
         default: '{{now}}'
-        format: 'LL'
+        date_format: 'YYYY-MM-DD'
         picker_utc: true
       - label: Body
         name: body
@@ -89,19 +90,30 @@ collections:
         name: nav
         widget: object
         summary: '{{fields.name}}: {{fields.order}}'
+        i18n: true
         collapsed: true
         fields:
+          - label: Menu title
+            name: navTitle
+            widget: string
+            required: false
+            i18n: true
           - label: Menu location
             name: menu
             widget: select
+            required: false
+            i18n: duplicate
             options:
               - { label: 'Main', value: 'main' }
               - { label: 'Footer 1', value: 'footer_1' }
               - { label: 'Footer 2', value: 'footer_2' }
               - { label: 'Footer 3', value: 'footer_3' }
+              - { label: 'Legal', value: 'legal' }
           - label: Menu order
             name: order
             widget: number
+            required: false
+            i18n: duplicate
             value_type: float
             min: -10000
             max: 10000
@@ -122,11 +134,13 @@ collections:
           - label: 'Alt text'
             name: alt
             widget: string
+            required: false
             default: ''
             i18n: true
           - label: Image
             name: src
             widget: image
+            required: false
             choose_url: true
   # Posts - content that can change or be added to over time
   - label: Posts
@@ -156,7 +170,7 @@ collections:
         name: date
         widget: datetime
         default: '{{now}}'
-        date_format: 'MMMM DD, YYYY'
+        date_format: 'YYYY-MM-DD'
         picker_utc: true
       - label: Body
         name: body
