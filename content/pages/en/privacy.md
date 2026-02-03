@@ -19,7 +19,7 @@ If we store your personal information with information that is non-personal, the
 
 ## What information do we collect?
 
-We don’t collect any personal information other than what you explicitly share with us through the Lectionary.app. Unless you contact us to tell us you’ve used the Lectionary.app, we have no way of knowing.
+We don’t collect any personal information other than what you explicitly share with us through our site. Unless you contact us to tell us you’ve used our site, we have no way of knowing.
 
 ## How do we use information we collect?
 
@@ -27,11 +27,11 @@ When you give us information, we will use it only in the ways for which you've g
 
 ## What information do we share?
 
-Whenever you share personal information with us through the Lectionary.app, we will not share that information with anyone apart from your knowledge and without your explicit permission.
+Whenever you share personal information with us through our site, we will not share that information with anyone apart from your knowledge and without your explicit permission.
 
 ## What if we want to share information we collect?
 
-Before sharing any personal information you’ve shared with us through the Lectionary.app, we will seek your permission directly. First, we will contact you by e-mail, phone, or private message through a common social media platform, or some other mutually beneficial communication method. We will ask you if and how we may share specific personal information you have shared with us through the Lectionary.app. Then, only after you have given us your explicit permission, will we share any of that information.
+Before sharing any personal information you’ve shared with us through our site, we will seek your permission directly. First, we will contact you by e-mail, phone, or private message through a common social media platform, or some other mutually beneficial communication method. We will ask you if and how we may share specific personal information you have shared with us through our site. Then, only after you have given us your explicit permission, will we share any of that information.
 
 ## What if we change this policy?
 

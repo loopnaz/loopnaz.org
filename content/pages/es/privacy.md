@@ -18,7 +18,7 @@ Si almacenamos su información personal junto con información no personal, cons
 
 ## ¿Qué información recopilamos?
 
-No recopilamos ninguna información personal que no sea la que usted comparte explícitamente con nosotros a través de Lectionary.app. A menos que se comunique con nosotros para informarnos que ha utilizado Lectionary.app, no tenemos forma de saberlo.
+No recopilamos ninguna información personal que no sea la que usted comparte explícitamente con nosotros a través de nuestro sitio web. A menos que se comunique con nosotros para informarnos que ha utilizado Lectionary.app, no tenemos forma de saberlo.
 
 ## ¿Cómo utilizamos la información que recopilamos?
 
@@ -26,11 +26,11 @@ Cuando nos proporciona información, la utilizaremos únicamente para los fines 
 
 ## ¿Qué información compartimos?
 
-Siempre que comparta información personal con nosotros a través de Lectionary.app, no compartiremos esa información con nadie sin su conocimiento y sin su permiso explícito.
+Siempre que comparta información personal con nosotros a través de nuestro sitio web, no compartiremos esa información con nadie sin su conocimiento y sin su permiso explícito.
 
 ## ¿Qué sucede si queremos compartir la información que recopilamos?
 
-Antes de compartir cualquier información personal que haya compartido con nosotros a través de Lectionary.app, solicitaremos su permiso directamente. Primero, nos comunicaremos con usted por correo electrónico, teléfono, mensaje privado a través de una plataforma de redes sociales común o cualquier otro método de comunicación mutuamente conveniente. Le preguntaremos si podemos compartir información personal específica que haya compartido con nosotros a través de Lectionary.app y cómo podemos hacerlo. Solo después de que nos haya dado su permiso explícito, compartiremos dicha información.
+Antes de compartir cualquier información personal que haya compartido con nosotros a través de nuestro sitio web, solicitaremos su permiso directamente. Primero, nos comunicaremos con usted por correo electrónico, teléfono, mensaje privado a través de una plataforma de redes sociales común o cualquier otro método de comunicación mutuamente conveniente. Le preguntaremos si podemos compartir información personal específica que haya compartido con nosotros a través de nuestro sitio web y cómo podemos hacerlo. Solo después de que nos haya dado su permiso explícito, compartiremos dicha información.
 
 ## ¿Qué sucede si cambiamos esta política?
 
