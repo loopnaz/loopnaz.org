@@ -22,6 +22,7 @@ export var data = {
 export function render(data) {
   /** @type {Object} Destructured template data */
   var {
+    content,
     faviconPath,
     fontScript,
     i18n: {defaultLanguage},
@@ -149,6 +150,7 @@ export function render(data) {
       font-weight: 700;
       font-display: swap;
     }
+
     @font-face {
         font-family: Lato;
         src: local('Lato'),
@@ -156,11 +158,24 @@ export function render(data) {
         font-weight: 400;
         font-display: swap;
     }
+
     html {
       font-family: Lato;
     }
+
+    /* Layout */
     #legal_nav {
       display: inline;
+    }
+
+    .flex,
+    #app_nav ul li {
+      display: flex;
+    }
+
+    .flex-column,
+    #app_nav ul li {
+      flex-direction: column;
     }
   </style>
   ${this.fileExists(fontScript)
@@ -179,10 +194,8 @@ export function render(data) {
         <a href="${home}"><span class="screen-reader">${locale.screenReader.goToHomePage}</span><svg width="405" height="96"><use href="/img/${lang}/logo.svg"></use></svg></a>
       </nav>
     </header>
-    <main id="main" tabindex="-1">
-      <!--${page.inputPath}-->
-      ${data.content}
-    </main>
+    <!--${page.inputPath}-->
+    ${content}
     <footer>
       <!--Copyright notice and legal navigation-->
       &copy; ${copyright.year} ${locale.siteOwner} | <nav id="legal_nav" aria-label="Legal navigation">
