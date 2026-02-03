@@ -10,6 +10,7 @@
  * @module content/pages
  */
 export default {
+  layout: 'page',
   tags: 'pages'
 }
 

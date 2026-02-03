@@ -2,6 +2,9 @@
 title: Accessibility Statement
 slug: accessibility
 date: 2026-02-02
+description: We are committed to making our site accessible for everyone by
+  meeting or exceeding Web Content Accessibility Guidelines 2.1 Level AA.
+  Suggestions welcome!
 nav:
   order: 4
   menu: legal

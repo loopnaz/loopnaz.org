@@ -1,6 +1,9 @@
 ---
 title: Política de privacidad
 slug: privacidad
+date: 2026-02-01
+description: Respetamos su privacidad. ¿Qué información recopilamos? ¿Cómo
+  utilizamos esa información?
 nav:
   menu: legal
   order: 1
@@ -12,7 +15,7 @@ tags:
 
 Para nosotros, «información personal» significa información que lo identifica directamente (como su nombre o dirección de correo electrónico) o que puede vincularse o combinarse razonablemente para identificarlo (como un número de identificación de cuenta o una dirección IP). Siempre le informaremos qué información personal recopilamos.
 
-## Consideramos cualquier otra información como «información no personal».
+Consideramos cualquier otra información como «información no personal».
 
 Si almacenamos su información personal junto con información no personal, consideraremos la combinación como información personal. Si eliminamos toda la información personal de un conjunto de datos, el conjunto restante será información no personal.
 

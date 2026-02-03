@@ -2,6 +2,8 @@
 title: Condiciones de uso
 slug: condiciones
 date: 2026-02-02
+description: Estos términos definen la relación entre usted como usuario y
+  nosotros como propietarios y desarrolladores de nuestro sitio web.
 nav:
   menu: legal
   order: 2

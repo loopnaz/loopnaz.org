@@ -2,6 +2,9 @@
 title: Declaración de accesibilidad
 slug: accesibilidad
 date: 2026-02-02
+description: Nos comprometemos a que nuestro sitio web sea accesible para todos,
+  cumpliendo o superando las Pautas de Accesibilidad 2.1. ¡Agradecemos sus
+  sugerencias!
 nav:
   menu: legal
   order: 4

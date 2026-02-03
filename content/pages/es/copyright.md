@@ -2,6 +2,9 @@
 title: Derechos de autor
 slug: derechos
 date: 2026-02-02
+description: Salvo que se indique lo contrario, el contenido de nuestro sitio
+  web está bajo la licencia Creative Commons Atribución-CompartirIgual 4.0
+  Internacional.
 nav:
   menu: null
   order: 3
@@ -10,7 +13,7 @@ tags:
 image:
   alt: ""
 ---
-Salvo que se indique lo contrario, el contenido de nuestro sitio web está bajo la licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional.
+Salvo que se indique lo contrario, el contenido de nuestro sitio web está bajo la licencia \[Creative Commons Atribución-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
 
 Usted es libre de copiar y redistribuir el material en cualquier medio o formato. También es libre de remezclar, transformar y desarrollar el material para cualquier propósito, incluso comercial. No revocaremos estos términos siempre que cumpla con las condiciones de esta licencia.
 
