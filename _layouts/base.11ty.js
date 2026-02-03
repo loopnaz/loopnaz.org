@@ -175,6 +175,9 @@ export function render(data) {
     <header>
       <a class="screen-reader" href="#main">${screenReader.skipToMain}</a>
       ${languageSwitcher(this.locale_links(page.url), screenReader.selectLanguage)}
+      <nav id="primary_nav" aria-label="${locale.screenReader.primaryNav}">
+        <a href="${home}"><span class="screen-reader">${locale.screenReader.goToHomePage}</span><svg width="405" height="96"><use href="/img/${lang}/logo.svg"></use></svg></a>
+      </nav>
     </header>
     <main id="main" tabindex="-1">
       <!--${page.inputPath}-->

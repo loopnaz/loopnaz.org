@@ -34,6 +34,8 @@ export default {
     // Screen reader link in the `<header>`
     skipToMain: 'Skip to main content',
     // Language switcher
-    selectLanguage: 'Choose another language'
+    selectLanguage: 'Choose another language',
+    // Primary navigation
+    primaryNav: 'Primary navigation'
   }
 }

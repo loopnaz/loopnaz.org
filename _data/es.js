@@ -34,6 +34,8 @@ export default {
     // Usado en <header> de las páginas
     skipToMain: 'Saltar al contenido principal',
     // Language switcher
-    selectLanguage: 'Elige otro idioma'
+    selectLanguage: 'Elige otro idioma',
+    // Navegación principal
+    primaryNav: 'Navegación principal'
   }
 }
