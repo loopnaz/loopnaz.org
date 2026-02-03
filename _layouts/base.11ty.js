@@ -85,6 +85,46 @@ export function render(data) {
          lang="${lang}"
          hreflang="${lang}">${label} (${locale.languages[lang]})</a>
     </li>`
+
+  /**
+   * Links for the legal menu (used in the footer)
+   * @callback legalNavLink
+   * @param {Object[]} link Destructured link data
+   */
+  var legalNavLink = ({url, data: {nav: {navTitle}, title}}) => {
+    var linkText = navTitle ? navTitle : title
+    return `<!--legalNavLink()--><span>
+      <a href="${url}">${linkText}</a>
+    </span>`
+  }
+
+  /**
+   * Generates an HTML menu from a specified collection of items based on provided criteria.
+   * @param {string} collection Name of the collection to filter
+   * @param {string} menu The menu ID to filter (see in admin/config.yaml)
+   * @param {function} callback A callback function to define menu HTML
+   * @param {string} [separator= ] An optional separator when joining menu items (defaults to a non-breaking space)
+   * @throws {Error} If the specified collection does not exist in the data
+   * @throws {Error} If the menu parameter is not a non-empty string
+   * @throws {Error} If the template parameter is not a function
+   * @returns {string} HTML
+   */
+  var menuFromCollection = (collection = all, menu, callback, separator = '&nbsp;') => {
+    // Validate parameters
+    this.validate(data.collections?.[collection], 'object', `Collection "${collection}" does not exist.`)
+    this.validate(menu, 'string', `Menu "${menu}" must be a non-empty string.`)
+    this.validate(callback, 'function')
+
+    // Filter and sort items before reduction
+    var filteredItems = data.collections[collection].filter(currentItem =>
+      currentItem.data?.nav?.menu === menu && this.inLocale(currentItem, lang)
+    )
+
+    // Sort items by the specified key
+    var sortedItems = this.orderBy(filteredItems, 'nav.order')
+    return sortedItems.map(item => callback(item)).join(separator)
+  }
+
   return `<!--./_layouts/base.11ty.js-->
 <!DOCTYPE html>
 <html lang="${lang}-${defaultLanguage.subtag}" dir="${data.dir}">
@@ -119,6 +159,9 @@ export function render(data) {
     html {
       font-family: Lato;
     }
+    #legal_nav {
+      display: inline;
+    }
   </style>
   ${this.fileExists(fontScript)
     ? `<!--JavaScript for font loading second stage-->
@@ -138,7 +181,10 @@ export function render(data) {
       ${data.content}
     </main>
     <footer>
-      &copy; ${copyright.year} ${locale.siteOwner}
+      <!--Copyright notice and legal navigation-->
+      &copy; ${copyright.year} ${locale.siteOwner} | <nav id="legal_nav" aria-label="Legal navigation">
+        ${menuFromCollection('policies', 'legal', legalNavLink, ' | ')}
+      </nav>
     </footer>
   </body>
 </html>`
