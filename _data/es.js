@@ -37,5 +37,22 @@ export default {
     selectLanguage: 'Elige otro idioma',
     // Navegación principal
     primaryNav: 'Navegación principal'
+  },
+
+  // Cadenas de texto para el formulario de contacto
+  contact: {
+    // Etiquetas de formulario
+    labels: {
+      // Campo de entrada oculto para atrapar a los bots de spam
+      honeyPot: 'Omita esta entrada si es un humano',
+      // Campo de nombre
+      name: 'Nombre',
+      // Campo de correo electrónico
+      email: 'Correo electrónico',
+      // Campo de mensaje
+      message: 'Mensaje',
+      // Botón de enviar
+      sendButton: 'Enviar'
+    }
   }
 }

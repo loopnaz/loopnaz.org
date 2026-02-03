@@ -37,5 +37,22 @@ export default {
     selectLanguage: 'Choose another language',
     // Primary navigation
     primaryNav: 'Primary navigation'
+  },
+
+  // Text strings for the contact form
+  contact: {
+    // Form labels
+    labels: {
+      // Hidden input field to trap spam bots
+      honeyPot: 'Skip this field if you are a human',
+      // Name field
+      name: 'Name',
+      // Email field
+      email: 'Email',
+      // Message field
+      message: 'Message',
+      // Send button
+      sendButton: 'Send'
+    }
   }
 }
