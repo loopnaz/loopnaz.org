@@ -74,13 +74,39 @@ collections:
         widget: 'string'
         required: true
         i18n: true
+        hint: Unique end of the URL, all lowercase and separated by hyphens
         pattern: ['^[a-z0-9\s-]*$', 'lowercase-words-separated-by-hyphens']
       - label: Date
         name: date
         widget: datetime
+        required: true
+        i18n: duplicate
         default: '{{now}}'
         date_format: 'YYYY-MM-DD'
         picker_utc: true
+      - label: Description
+        name: description
+        widget: text
+        required: true
+        i18n: true
+        hint: '60–160 characters for SEO'
+        pattern: ['.{60,160}', "Must have between 60 and 160 characters"]
+      - label: Layout
+        name: layout
+        widget: string
+        required: true
+        i18n: duplicate
+        default: page
+        hint: 'Override default layout (page) with another one in _layouts/'
+      - label: Layout position
+        name: chainOrder
+        widget: select
+        required: false
+        i18n: duplicate
+        hint: Where should the custom layout content appear?
+        options:
+          - { label: 'Before page body', value: 'before' }
+          - { label: 'After page body', value: 'after' }
       - label: Body
         name: body
         widget: markdown
@@ -89,8 +115,9 @@ collections:
       - label: Navigation
         name: nav
         widget: object
-        summary: '{{fields.name}}: {{fields.order}}'
+        summary: '{{fields.menu}}: {{fields.order}}'
         i18n: true
+        hint: Toggle open to assign one or more menu locations
         collapsed: true
         fields:
           - label: Menu title
@@ -98,11 +125,13 @@ collections:
             widget: string
             required: false
             i18n: true
+            hint: Set link text for navigation menus
           - label: Menu location
             name: menu
             widget: select
             required: false
             i18n: duplicate
+            hint: Assign to one or more navigation locations
             options:
               - { label: 'Main', value: 'main' }
               - { label: 'Footer 1', value: 'footer_1' }
@@ -114,6 +143,7 @@ collections:
             widget: number
             required: false
             i18n: duplicate
+            hint: For sorting menu items
             value_type: float
             min: -10000
             max: 10000
@@ -123,13 +153,16 @@ collections:
         name: tags
         widget: select
         multiple: true
+        required: false
         i18n: duplicate
+        hint: Add this page to one or more content collections
         options: ['policies', 'discipleship', 'missions', 'youth', 'adults', 'children', 'local', 'district', 'global']
       - label: 'Cover photo'
         name: image
         widget: object
         required: false
         i18n: true
+        hint: The main image for the page
         fields:
           - label: 'Alt text'
             name: alt
@@ -137,11 +170,14 @@ collections:
             required: false
             default: ''
             i18n: true
+            hint: Always include a brief description to help make images accessible
           - label: Image
             name: src
             widget: image
             required: false
             choose_url: true
+            i18n: duplicate
+            hint: Select an image from our Cloudinary media library or from a URL
   # Posts - content that can change or be added to over time
   - label: Posts
     label_singular: Post
@@ -157,10 +193,13 @@ collections:
         widget: 'string'
         required: true
         i18n: true
+        hint: Unique end of the URL, all lowercase and separated by hyphens
         pattern: ['^[a-z0-9\s-]*$', 'lowercase-words-separated-by-hyphens']
       - label: Author(s)
         name: author
         widget: relation
+        i18n: duplicate
+        hint: One or more authors
         collection: people
         value_field: '{{slug}}'
         search_fields: ['name.first', 'name.last', 'role', 'slug']
@@ -169,9 +208,18 @@ collections:
       - label: Date
         name: date
         widget: datetime
+        required: true
+        i18n: duplicate
         default: '{{now}}'
         date_format: 'YYYY-MM-DD'
         picker_utc: true
+      - label: Description
+        name: description
+        widget: text
+        required: false
+        i18n: true
+        hint: '60–160 characters for SEO'
+        pattern: ['.{60,160}', "Must have between 60 and 160 characters"]
       - label: Body
         name: body
         widget: markdown
@@ -183,8 +231,9 @@ collections:
         name: tags
         widget: select
         required: false
-        multiple: true
         i18n: duplicate
+        hint: Add this post to one or more content collections
+        multiple: true
         options: ['discipleship', 'missions', 'youth', 'adults', 'children', 'local', 'district', 'global']
       - label: 'Cover photo'
         name: image
@@ -197,10 +246,12 @@ collections:
             widget: string
             default: ''
             i18n: true
+            hint: Always include a brief description to help make images accessible
           - label: Image
             name: src
             widget: image
             choose_url: true
+            hint: Select an image from our Cloudinary media library or from a URL
   # People - profile info for staff, board members, and other people
   - label: People
     label_singular: Person
@@ -215,21 +266,25 @@ collections:
         name: name
         widget: object
         summary: '{{fields.name.first}} {{fields.name.last}}'
+        i18n: true
         fields:
           - label: First name
             name: first
             widget: string
             required: true
+            i18n: duplicate
             pattern: ['^[a-zA-Z0-9\s.,’-]*$', 'First name']
           - label: Last name
             name: last
             widget: string
             required: true
+            i18n: duplicate
             pattern: ['^[a-zA-Z0-9\s.,’-]*$', 'Last name']
           - label: Display name
             name: display
             widget: string
             required: true
+            i18n: duplicate
             pattern: ['^[a-zA-Z0-9\s.,’-]*$', 'First and last name']
       - label: Slug
         name: slug
@@ -246,12 +301,23 @@ collections:
         name: email
         widget: string
         required: true
+        i18n: duplicate
         pattern: ['^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$', 'you@example.com']
+        hint: 'you@example.com'
+      - label: Description
+        name: description
+        widget: text
+        required: false
+        i18n: true
+        hint: '70–160 characters'
+        pattern: ['.{50,160}', "Must have between 50 and 106 characters"]
       - label: Bio
         name: bio
         widget: markdown
         required: false
         i18n: true
+        hint: '50–150 words'
+        pattern: ['^(?:\W*\w+\b){50,150}$', "Must have between 50 and 150 words"]
         # Internationalized using _data/tags.js
       - label: Tags
         label_singular: Tag
@@ -259,19 +325,23 @@ collections:
         widget: select
         multiple: true
         i18n: duplicate
+        hint: Add this author to one or more lists
         options: ['staff', 'pastor', 'board', 'volunteer']
       - label: Headshot
         name: image
         widget: object
         required: false
         i18n: true
+        hint: A photograph of the author’s face
         fields:
           - label: 'Alt text'
             name: alt
             widget: string
             default: ''
             i18n: true
+            hint: Always include a brief description to help make images accessible
           - label: Image
             name: src
             widget: image
             choose_url: true
+            hint: Select an image from our Cloudinary media library or from a URL
