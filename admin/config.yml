@@ -381,14 +381,6 @@ collections:
         name: permalink
         widget: hidden
         default: false
-      #   # Ignore the output directory
-      #   # https://www.11ty.dev/docs/permalinks/#ignore-the-output-directory
-      # - label: urlOverride
-      #   name: urlOverride
-      #   widget: hidden
-      #   default: '{{permalink | escape}}'
-      #   # Ignore the output directory
-      #   # https://www.11ty.dev/docs/permalinks/#ignore-the-output-directory
       - label: File slug
         name: customFileSlug
         widget: 'string'
