@@ -99,7 +99,7 @@ collections:
         default: page
         hint: 'Override default layout (page) with another one in _layouts/'
       - label: Layout position
-        name: chainOrder
+        name: layoutChainOrder
         widget: select
         required: false
         i18n: duplicate
@@ -115,7 +115,7 @@ collections:
       - label: Navigation
         name: nav
         widget: object
-        summary: '{{fields.menu}}: {{fields.order}}'
+        summary: '{{fields.menu}}, {{fields.order}}'
         i18n: true
         hint: Toggle open to assign one or more menu locations
         collapsed: true
@@ -130,16 +130,18 @@ collections:
             name: menu
             widget: select
             required: false
+            multiple: true
             i18n: duplicate
             hint: Assign to one or more navigation locations
             options:
               - { label: 'Main', value: 'main' }
-              - { label: 'Footer 1', value: 'footer_1' }
-              - { label: 'Footer 2', value: 'footer_2' }
-              - { label: 'Footer 3', value: 'footer_3' }
+              - { label: 'Join Us', value: 'join_us' }
+              - { label: 'Discover', value: 'discover' }
+              - { label: 'Get Involved', value: 'get_involved' }
+              - { label: 'Learn More', value: 'learn_more' }
               - { label: 'Legal', value: 'legal' }
           - label: Menu order
-            name: order
+            name: weight
             widget: number
             required: false
             i18n: duplicate
@@ -291,6 +293,7 @@ collections:
         widget: 'string'
         required: true
         i18n: duplicate
+        hint: firstname-lastname (all lowercase and separated by hyphens)Vy
       - label: Role
         name: role
         widget: string
@@ -345,3 +348,80 @@ collections:
             widget: image
             choose_url: true
             hint: Select an image from our Cloudinary media library or from a URL
+  # Links - URL for embedding link text (used in footer menu)
+  - label: Links
+    label_singular: Link
+    name: links
+    folder: links/
+    create: true
+    identifier_field: customFileSlug
+    fields:
+      # - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - label: Text
+        name: linkText
+        widget: object
+        fields:
+          - label: English
+            name: en
+            widget: string
+            hint: Text displayed in English
+          - label: Español
+            name: es
+            widget: string
+            hint: Texto mostrado en espańol
+      - label: Link
+        name: url
+        widget: string
+        hint: URL
+        ## Source - https://stackoverflow.com/a/17773849
+        ## Posted by foufos, modified by community. See post 'Timeline' for change history
+        ## Retrieved 2026-02-11, License - CC BY-SA 4.0
+        pattern: ['(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})', 'https://example.com/']
+      - label: permalink
+        name: permalink
+        widget: hidden
+        default: false
+      #   # Ignore the output directory
+      #   # https://www.11ty.dev/docs/permalinks/#ignore-the-output-directory
+      # - label: urlOverride
+      #   name: urlOverride
+      #   widget: hidden
+      #   default: '{{permalink | escape}}'
+      #   # Ignore the output directory
+      #   # https://www.11ty.dev/docs/permalinks/#ignore-the-output-directory
+      - label: File slug
+        name: customFileSlug
+        widget: 'string'
+        i18n: duplicate
+        hint: Used to save this link, all lowercase and separated by hyphens
+        pattern: ['^[a-z0-9\s-]*$', 'lowercase-words-separated-by-hyphens']
+      - label: Navigation
+        name: nav
+        widget: object
+        summary: '{{fields.menu}}, {{fields.order}}'
+        hint: Toggle open to assign one or more menu locations
+        collapsed: true
+        fields:
+          - label: Menu location
+            name: menu
+            widget: select
+            required: false
+            multiple: true
+            i18n: duplicate
+            hint: Assign to one or more navigation locations
+            options:
+              - { label: 'Main', value: 'main' }
+              - { label: 'Join Us', value: 'join_us' }
+              - { label: 'Discover', value: 'discover' }
+              - { label: 'Get Involved', value: 'get_involved' }
+              - { label: 'Learn More', value: 'learn_more' }
+              - { label: 'Legal', value: 'legal' }
+          - label: Menu order
+            name: weight
+            widget: number
+            required: false
+            i18n: duplicate
+            hint: For sorting menu items
+            value_type: float
+            min: -10000
+            max: 10000
