@@ -1,0 +1,39 @@
+{
+  "type": "Feature",
+  "properties": {
+    "en": {
+      "name": "Church of the Nazarene in the Loop",
+      "country": {
+        "abbr": "USA",
+        "name": "United States of America"
+      }
+    },
+    "es": {
+      "name": "Iglesia del Nazareno en el Loop",
+      "country": {
+        "abbr": "EUA",
+        "name": "Estados Unidos de América"
+      }
+    },
+    "phone": {
+      "tel": "+13125158453",
+      "formatted": "+1 (312) 515-8453"
+    },
+    "address": {
+      "street": "5 N Wabash Ave, #1204",
+      "city": "Chicago",
+      "state": {
+        "abbr": "IL",
+        "name": "Illinois"
+      },
+      "postalCode": "60602"
+    }
+  },
+  "geometry": {
+    "coordinates": [
+      -87.7008,
+      41.8854
+    ],
+    "type": "Point"
+  }
+}
