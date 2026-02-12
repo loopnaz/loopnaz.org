@@ -36,8 +36,18 @@ export default {
     // Language switcher
     selectLanguage: 'Choose another language',
     // Primary navigation
-    primaryNav: 'Primary navigation'
+    primaryNav: 'Primary navigation',
+    // Footer navigation
+    footerNav: 'Footer navigation',
+    // Legal navigation
+    legalNav: 'Legal navigation'
   },
+
+  // Footer navigation section headings
+  footer_1: 'Join Us',
+  footer_2: 'Discover',
+  footer_3: 'Get Involved',
+  footer_4: 'Learn More',
 
   // Text strings for the contact form
   contact: {

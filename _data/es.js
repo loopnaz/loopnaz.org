@@ -36,8 +36,18 @@ export default {
     // Language switcher
     selectLanguage: 'Elige otro idioma',
     // Navegación principal
-    primaryNav: 'Navegación principal'
+    primaryNav: 'Navegación principal',
+    // Navegación en <footer> de las páginas
+    footerNav: 'Navegación del pie de página',
+    // Navegación legal
+    legalNav: 'Navegación legal'
   },
+
+  // Encabezados de seccion en la navegación del pie de página
+  footer_1: 'Únete a nosostros',
+  footer_2: 'Descubre',
+  footer_3: 'Involúcrese',
+  footer_4: 'Aprende más',
 
   // Cadenas de texto para el formulario de contacto
   contact: {
