@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/loopnaz/loopnaz.org.git"
+    "url": "git+https://github.com/loopnaz/loopnaz.org.git",
+    "home": "https://github.com/loopnaz/loopnaz.org/"
   },
   "license": "MIT",
   "author": "Reuben L. Lillie",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
+    "@shenangopress/catharticons": "^1.0.1",
     "clean-css": "^5.3.3"
   }
 }
