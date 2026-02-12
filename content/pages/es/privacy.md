@@ -4,10 +4,13 @@ slug: privacidad
 date: 2026-02-01
 description: Respetamos su privacidad. ¿Qué información recopilamos? ¿Cómo
   utilizamos esa información?
+layout: page
+chainOrder: null
 nav:
-  menu: legal
-  order: 1
+  menu:
+    - legal
   navTitle: Privacidad
+  weight: 1
 tags:
   - policies
 ---

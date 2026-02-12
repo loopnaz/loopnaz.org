@@ -7,8 +7,9 @@ description: Envíenos un mensaje a través de este formulario de contacto o
 layout: contact
 chainOrder: after
 nav:
-  menu: footer_1
-  order: 3
+  menu:
+    - discover
+  weight: 3
 tags: null
 image:
   alt: ""

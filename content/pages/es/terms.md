@@ -4,10 +4,13 @@ slug: condiciones
 date: 2026-02-02
 description: Estos términos definen la relación entre usted como usuario y
   nosotros como propietarios y desarrolladores de nuestro sitio web.
+layout: page
+chainOrder: null
 nav:
-  menu: legal
-  order: 2
+  menu:
+    - legal
   navTitle: Condiciones
+  weight: 2
 tags:
   - policies
 image:

@@ -4,8 +4,9 @@ slug: copyright
 date: 2026-02-02
 description: Unless otherwise noted, content on our site is licensed under the
   Creative Commons Attribution-ShareAlike 4.0 International license.
+layout: page
 nav:
-  order: 3
+  weight: 3
 tags:
   - policies
 image:

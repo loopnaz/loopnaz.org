@@ -4,10 +4,12 @@ slug: terms
 date: 2026-02-02
 description: These terms define the relationship between you as a user and us as
   the owner and developer of our site.
+layout: page
 nav:
-  menu: legal
-  order: 2
+  menu:
+    - legal
   navTitle: Terms
+  weight: 2
 tags:
   - policies
 image:

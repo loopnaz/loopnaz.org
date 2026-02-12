@@ -5,9 +5,11 @@ date: 2026-02-02
 description: Salvo que se indique lo contrario, el contenido de nuestro sitio
   web está bajo la licencia Creative Commons Atribución-CompartirIgual 4.0
   Internacional.
+layout: page
+chainOrder: null
 nav:
   menu: null
-  order: 3
+  weight: 3
 tags:
   - policies
 image:

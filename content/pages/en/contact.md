@@ -6,8 +6,9 @@ description: Send us a message with this contact form or call us at (312) 515-84
 layout: contact
 chainOrder: after
 nav:
-  menu: footer_1
-  order: 3
+  menu:
+    - discover
+  weight: 3
 image:
   alt: ""
 ---

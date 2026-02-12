@@ -5,10 +5,14 @@ date: 2026-02-02
 description: Nos comprometemos a que nuestro sitio web sea accesible para todos,
   cumpliendo o superando las Pautas de Accesibilidad 2.1. ¡Agradecemos sus
   sugerencias!
+layout: page
 nav:
-  menu: legal
-  order: 4
+  menu:
+    - legal
   navTitle: Accesibilidad
+  weight: 4
+chainOrder: null
+layoutChainOrder: null
 tags:
   - policies
 image:
