@@ -352,34 +352,35 @@ collections:
   - label: Links
     label_singular: Link
     name: links
-    folder: links/
+    folder: content/links/
     create: true
     identifier_field: customFileSlug
+    i18n: true
     fields:
       # - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
       - label: Text
-        name: linkText
-        widget: object
-        fields:
-          - label: English
-            name: en
-            widget: string
-            hint: Text displayed in English
-          - label: Español
-            name: es
-            widget: string
-            hint: Texto mostrado en espańol
+        name: title
+        widget: string
+        i18n: true
+        hint: Display text
       - label: Link
         name: url
         widget: string
+        i18n: duplicate
         hint: URL
         ## Source - https://stackoverflow.com/a/17773849
         ## Posted by foufos, modified by community. See post 'Timeline' for change history
         ## Retrieved 2026-02-11, License - CC BY-SA 4.0
         pattern: ['(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})', 'https://example.com/']
+      - label: urlOverride
+        name: urlOverride
+        widget: hidden
+        i18n: duplicate
+        default: '{{url}}'
       - label: permalink
         name: permalink
         widget: hidden
+        i18n: duplicate
         default: false
       - label: File slug
         name: customFileSlug
@@ -390,6 +391,7 @@ collections:
       - label: Navigation
         name: nav
         widget: object
+        i18n: true
         summary: '{{fields.menu}}, {{fields.order}}'
         hint: Toggle open to assign one or more menu locations
         collapsed: true
