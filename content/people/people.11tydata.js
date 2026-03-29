@@ -9,5 +9,5 @@
  * @see {@link https://www.11ty.dev/docs/data-template-dir/ Template and directory data files in 11ty}
  */
 export default {
-  tags: 'people'
+  tags: 'person'
 }

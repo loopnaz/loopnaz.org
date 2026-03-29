@@ -1,5 +1,5 @@
 /**
- * @file Datos de directorio comunes a todos las personas en español
+ * @file Datos de directorio comunes a todas las personas en español
  * @author Reuben L. Lillie <rlillie@loopnaz.org>
  * @since 2.0.0
  * @see {@link https://www.11ty.dev/docs/data-template-dir/ Datos de templatos y directorios en Eleventy}

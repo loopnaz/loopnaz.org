@@ -11,6 +11,5 @@
  */
 export default {
   layout: 'page',
-  tags: 'pages'
+  tags: 'page'
 }
-

@@ -15,5 +15,6 @@ export default {
    * Etiquetas de idioma BCP 47
    * @see {@link https://www.langtag.net/ Registro de etiquetas de idioma}
    * */
-  lang: 'es'
+  lang: 'es',
+  layout: 'page'
 }
