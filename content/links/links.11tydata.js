@@ -10,5 +10,5 @@
  * @module content
  */
 export default {
-  tags: 'links'
+  tags: 'link'
 }
