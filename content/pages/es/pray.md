@@ -2,10 +2,7 @@
 title: Reza
 slug: reza
 date: 2026-02-04
-description: Todo lo que hacemos comienza y termina con la oración. Es nuestra
-  principal prioridad, no solo un último recurso. ¿Cómo podemos orar por ti? ¿Te
-  unirías a nosotros para orar por nuestra querida ciudad?
-layout: page
+description: Todo lo que hacemos comienza y termina con la oración. Es nuestra principal prioridad, no solo un último recurso. ¿Cómo podemos orar por ti? ¿Te unirías a nosotros para rezar por nuestra querida ciudad?
 nav:
   menu:
     - get_involved
@@ -13,4 +10,4 @@ nav:
 image:
   alt: ""
 ---
-Todo lo que hacemos comienza y termina con la oración. Es nuestra principal prioridad, no solo un último recurso. ¿Cómo podemos orar por ti? ¿Te unirías a nosotros para orar por nuestra querida ciudad?
+Todo lo que hacemos comienza y termina con la oración. Es nuestra principal prioridad, no solo un último recurso. ¿Cómo podemos orar por ti? ¿Te unirías a nosotros para rezar por nuestra querida ciudad?
