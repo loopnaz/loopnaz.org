@@ -62,7 +62,7 @@ export default {
       // Campo de mensaje
       message: 'Mensaje',
       // Botón de enviar
-      sendButton: 'Enviar'
+      sendButton: 'Envía'
     }
   }
 }
