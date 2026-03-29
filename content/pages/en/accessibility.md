@@ -5,14 +5,13 @@ date: 2026-02-02
 description: We are committed to making our site accessible for everyone by
   meeting or exceeding Web Content Accessibility Guidelines 2.1 Level AA.
   Suggestions welcome!
-layout: page
 nav:
   menu:
     - legal
   navTitle: Accessibility
   weight: 4
 tags:
-  - policies
+  - policy
 image:
   alt: ""
 ---

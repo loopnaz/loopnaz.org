@@ -4,14 +4,13 @@ slug: privacy
 date: 2026-02-01
 description: We respect your privacy. What information do we collect? How do we
   use that information?
-layout: page
 nav:
   menu:
     - legal
   weight: 1
   navTitle: Privacy
 tags:
-  - policies
+  - policy
 ---
 ## What do we mean by “personal information?”
 

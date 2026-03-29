@@ -4,7 +4,6 @@ slug: privacidad
 date: 2026-02-01
 description: Respetamos su privacidad. ¿Qué información recopilamos? ¿Cómo
   utilizamos esa información?
-layout: page
 chainOrder: null
 nav:
   menu:
@@ -12,7 +11,7 @@ nav:
   navTitle: Privacidad
   weight: 1
 tags:
-  - policies
+  - policy
 ---
 ## ¿Qué entendemos por «información personal»?
 
