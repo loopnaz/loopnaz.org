@@ -30,7 +30,12 @@ export default () => {
    * @param {string} format Color format (e.g., `'hex'`)
    * @returns {string}
    */
-  var colorValues = (arr, format) => arr.map(color => color[format]).join(', ')
+  var colorValues = (arr, format, alpha) => arr.map(color => {
+    var alphaValue = alpha !== null ? ` / ${alpha}` : ''
+    return format === 'hex'
+      ? color[format]
+      : `rgb(${color[format].join(' ')}${alphaValue})`
+  }).join(', ')
 
   /**
    * Format angle and color values for CSS gradient declaration
@@ -39,17 +44,23 @@ export default () => {
    * @param {Object[]} colorStops Colors within the gradient
    * @param {string} [format=hex] Color format (i.e., `hex` or `rgb`)
    */
-  var css = (angle, colorStops, format = 'hex') => [
-    angles[angle], colorValues(colorStops, format)
+  var css = (angle, colorStops, format = 'hex', alpha = null) => [
+    `${angles[angle]}deg`, colorValues(colorStops, format, alpha)
   ].join(', ')
 
   return {
     purpleGreenBlue: css('obtuse', [purple[300], green[300], blue[300]]),
+    purpleGreenBlueOverlap: css('obtuse', [purple[300], green[300], blue[300]], 'rgb',' 0.87'),
     blueToPurple: css('acute', [blue[500], purple[300]]),
+    blueToPurpleOverlap: css('acute', [blue[500], purple[300]], 'rgb', '0.87'),
     greenToBlue: css('acute', [green[100], blue[500]]),
+    greenToBlueOverlap: css('acute', [green[100], blue[500]], 'rgb', '0.87'),
     redToYellow: css('obtuse', [red[700], red[300], yellow[700], yellow[300]]),
+    redToYellowOverlap: css('obtuse', [red[700], red[300], yellow[700], yellow[300]], 'rgb', '0.87'),
     redToOrange: css('acute', [red[500], orange[300]]),
+    redToOrangeOverlap: css('acute', [red[500], orange[300]], 'rgb', '0.87'),
     // NB, green[500] differs from p. 13 of the guide, #2db674
     orangeToGreen: css('acute', [orange[300], green[500]]),
+    orangeToGreenOverlap: css('acute', [orange[300], green[500]], 'rgb', '0.87'),
   }
 }
