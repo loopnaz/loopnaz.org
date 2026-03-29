@@ -25,8 +25,8 @@
     var fonts = {
       bold: new FontFace('Lato', 'url(/fonts/lato/Lato-Bold-hint-all.woff2) format("woff2")', {weight: '700'}),
       boldItalic: new FontFace('Lato', 'url(/fonts/lato/Lato-BoldItalic-hint-all.woff2) format("woff2")', {style: 'italic', weight: '700'}),
-      italic: new FontFace('Lato', 'url(/fonts/lato/Lato-Italic-hint-all.woff2) format("woff2")', {sytle: 'italic'}),
-      regular: new FontFace('Lato', 'url(/fonts/lato/Lato-Regular-hint-all.woff2) format("woff2")')
+      italic: new FontFace('Lato', 'url(/fonts/lato/Lato-Italic-hint-all.woff2) format("woff2")', {sytle: 'italic', weight: '400'}),
+      regular: new FontFace('Lato', 'url(/fonts/lato/Lato-Regular-hint-all.woff2) format("woff2")', {weight: '400'})
     }
 
     /** @type {Promise.<FontFace[]>} Load each font */
