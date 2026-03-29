@@ -27,7 +27,7 @@ export function render(data) {
   // Title fallback to `name` from `_data/meta.js`
   return `<!--_layouts/page.11ty.js-->
 <main id="main" class="page" tabindex="-1">
-  <article>
+  <article class="grid">
     <header>
       <h1>${title}</h1>
     </header>

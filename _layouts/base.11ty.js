@@ -25,14 +25,17 @@ export function render(data) {
   /** @type {Object} Destructured template data */
   var {
     collections,
+    colors,
     content,
     faviconPath,
     fontScript,
     geojson,
+    gradients,
     i18n: {defaultLanguage},
     lang,
     meta: {copyright},
     page,
+    tags,
     title
   } = data
 
@@ -62,6 +65,9 @@ export function render(data) {
     // Otherwise, use the localized site name (e.g., in `_data/en.js`)
     : locale.siteName
 
+  /** @type {string[]|null} List of tags */
+  var tagList = tags ? tags.map(tag => tag).join(' ') : null
+
   /**
    * Lists other translations available for this content
    * @callback languageSwitcher
@@ -73,10 +79,10 @@ export function render(data) {
     links.length >= 1
       // Then display the language switcher.
       ? `<!--languageSwitcher() in _layouts/base.11ty.js-->
-        <nav class="languages-nav" aria-labelledby="languages-nav">
+        <nav class="languages-nav emoji-text inline small" aria-labelledby="languages-nav">
           <h2 aria-labelledby="languages-nav"
               class="screen-reader">${listHeader}</h2>
-          <ul>${links.map((link) => supportedLanguage(link))
+          <ul class="no-list-style">${links.map((link) => supportedLanguage(link))
             .join(', ')}</ul>
         </nav>`
       // Otherwise, leave a comment for debugging.
@@ -110,15 +116,13 @@ export function render(data) {
       // Used by content/links/*.md
       urlOverride}
     }) => {
-    // Is the data is for an external link?
-    linkText = linkText
-        // Use the localized link text
-        ? linkText[lang]
-        // Does the page have a shortened navigation title?
-        : navTitle
-          ? navTitle
-          // Otherwise, use the page title
-          : title
+
+    // Does the page have a shortened navigation title?
+    linkText = navTitle
+      // Use that one
+      ? navTitle
+      // Otherwise, use the page title
+      : title
 
     // Is the data for an external link? Otherwise, use the normal URL
     url = urlOverride ? urlOverride : url
@@ -134,7 +138,7 @@ export function render(data) {
    * @param {string} name Name of social network
    * @param {string} url  Social network profile URL
    */
-  var socialIcon = (name, url) => `<!--socialIcon()-->
+  var socialIcon = ({name, url}) => `<!--socialIcon()-->
   <a href="${url}">${catharticons(name)}</a>`
 
   /**
@@ -181,44 +185,71 @@ export function render(data) {
       : `<!--No favicon markup at ${faviconPath}-->`
     }
     <!-- Preload HTML for font loading first stage-->
-    <link rel="preload" href="fonts/lato/Lato-Bold-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/lato/Lato-Regular-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/lato/Lato-Bold-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/lato/Lato-Regular-kern-latin.woff2" as="font" type="font/woff2" crossorigin>
     <style>
-      /* CSS for font loading first stage */
-      @font-face {
-        font-family: Lato;
-        src: local('Lato'),
-          url(/fonts/lato/Lato-Bold-kern-latin.woff2) format("woff2");
-        font-weight: 700;
-        font-display: swap;
+      /* Root variables */
+      :root {
+        /* Colors */
+        --black: ${colors.black[900].hex};
+        --gray-100: ${colors.gray[100].hex};
+        --gray-300: ${colors.gray[100].hex};
+        --gray-500: ${colors.gray[500].hex};
+        --gray-700: ${colors.gray[700].hex};
+        --red-700: ${colors.red[700].hex};
+        --blue-100: ${colors.blue[100].hex};
+        --blue-300: ${colors.blue[300].hex};
+        --blue-500: ${colors.blue[500].hex};
+        --blue-700: ${colors.blue[700].hex};
+        --blue-900: ${colors.blue[900].hex};
+
+        /* Gradients */
+        --purple-green-blue: linear-gradient(${gradients.purpleGreenBlue});
+        --purple-green-blue-overlap: linear-gradient(${gradients.purpleGreenBlueOverlap});
+        --blue-to-purple: linear-gradient(${gradients.blueToPurple});
+        --blue-to-purple-overlap: linear-gradient(${gradients.blueToPurpleOverlap});
+        --green-to-blue: linear-gradient(${gradients.greenToBlue});
+        --green-to-blue-overlap: linear-gradient(${gradients.greenToBlueOverlap});
+        --red-to-yellow: linear-gradient(${gradients.redToYellow});
+        --red-to-yellow-overlap: linear-gradient(${gradients.redToYellowOverlap});
+        --red-to-orange: linear-gradient(${gradients.redToOrange});
+        --red-to-orange-overlap: linear-gradient(${gradients.redToOrangeOverlap});
+        --orange-to-green: linear-gradient(${gradients.orangeToGreen});
+        --orange-to-green-overlap: linear-gradient(${gradients.orangeToGreenOverlap});
+
+        /* Units */
+        --base-unit: 1em;
+        --base-unit-half: calc(var(--base-unit) / 2);
+        --base-unit-2x: calc(var(--base-unit) * 2);
+        --base-unit-3x: calc(var(--base-unit) * 3);
+        --full-width: calc(100vw - var(--base-unit-2x));
+        --paragraph-width: 66ch;
+
+        /* Variables */
+        --text-color: var(--gray-700);
+        --background-color: white;
+        --accent-color: var(--red-700);
+        --border-color: var(--gray-100);
+        --border: 1px solid var(--border-color);
+
+        /**
+         * Dark mode variants
+         * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme MDN}
+         */
+        @media (prefers-color-scheme: dark) {
+          --text-color: white;
+          --background-color: var(--black);
+          --border-color: var(--gray-500);
+        }
       }
 
-      @font-face {
-          font-family: Lato;
-          src: local('Lato'),
-            url(/fonts/lato/Lato-Regular-kern-latin.woff2) format("woff2");
-          font-weight: 400;
-          font-display: swap;
-      }
-
-      html {
-        font-family: Lato;
-      }
-
-      /* Layout */
-      #legal_nav {
-        display: inline;
-      }
-
-      .flex,
-      #app_nav ul li {
-        display: flex;
-      }
-
-      .flex-column,
-      #app_nav ul li {
-        flex-direction: column;
-      }
+      ${this.minifyCss(`<!--Inline CSS-->
+        ${this.fileToString('css/fonts.css')}
+        ${this.fileToString('css/layout.css')}
+        ${this.fileToString('css/typography.css')}
+        ${this.fileToString('css/forms.css')}
+        ${this.fileToString('css/a11y.css')}
+      `)}
     </style>
     ${this.fileExists(fontScript)
       ? `<!--JavaScript for font loading second stage-->
@@ -230,25 +261,29 @@ export function render(data) {
     <!--Zeffy donation form script-->
     <script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js"></script>
   </head>
-  <body>
-    <header id="site_header">
+   <body class="no-margin" ${tags
+    ? `data-tags="${tagList}"`
+    : ''}>
+    <header id="site_header" class="flex flex-column small-gap">
       <a class="screen-reader" href="#main">${screenReader.skipToMain}</a>
       ${languageSwitcher(this.locale_links(page.url), screenReader.selectLanguage)}
-      <nav id="primary_nav" aria-label="${screenReader.primaryNav}">
+      <nav id="primary_nav" class="flex" aria-label="${screenReader.primaryNav}">
         <a href="${home}"><span class="screen-reader">${screenReader.goToHomePage}</span><svg width="405" height="96"><use href="/img/${lang}/logo.svg"></use></svg></a>
-        <ul>${navList('main')}</ul>
+        <ul class="flex gap no-list-style bold uppercase">
+          ${navList('main')}
+        </ul>
       </nav>
     </header>
     <!--${page.inputPath}-->
     ${content}
-    <footer id="site_footer">
-      <nav id="footer_nav" aria-label="${screenReader.footerNav}">
+    <footer id="site_footer" class="grid gap">
+      <nav id="footer_nav" aria-label="${screenReader.footerNav}" class="grid gap columns">
         <!--Contact Information-->
         <section id="footer_0">
           <a href="${home}"><span class="screen-reader">${screenReader.goToHomePage}</span><svg width="270" height="64"><use href="/img/${lang}/logo.svg"></use></svg></a>
-          <ul>
-            ${data.social.map(({name, url}) => `<li>${socialIcon(name, url)}</li>`).join('')}
-          </ul>
+          <nav class="inline social">
+            ${data.social.map(network => socialIcon(network)).join('\n')}
+          </nav>
         </section>
         <!--Join Us-->
         <section id="footer_1">
@@ -277,8 +312,11 @@ export function render(data) {
           <ul>${navList('learn_more')}</ul>
         </section>
       </nav>
+      <nav id="legal_nav"
+           class="inline small"
+           aria-label="${screenReader.legalNav}">
       <!--Copyright notice and legal navigation-->
-      &copy; ${copyright.year} ${locale.siteOwner}<span aria-hidden="true"> | </span><nav id="legal_nav" aria-label="${screenReader.legalNav}">
+      &copy; ${copyright.year} ${locale.siteOwner}<span aria-hidden="true"> | </span>
         <ul>
           ${navList('legal', navItem, '<span aria-hidden="true"> | </span>')}
         </ul>
