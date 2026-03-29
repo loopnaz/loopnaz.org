@@ -1,5 +1,117 @@
 /**
- * @file Defines styles for site typography
+ * @file Typography
  * @author Reuben L. Lillie <rlillie@loopnaz.org>
  * @since 2.0.0
  */
+
+html {
+  color: var(--text-color);
+  font-size: 1.15em;
+  line-height: 1.5;
+}
+
+a {
+  color: unset;
+}
+
+#primary_nav ul li:last-of-type a,
+#primary_nav ul li:last-of-type a,
+.accent-background {
+  color: white;
+}
+
+address,
+a[href^="tel:"] {
+  font-style: normal;
+  font-weight: normal;
+}
+
+a[href^="tel:"] {
+  text-decoration: none;
+}
+
+h1,
+.uppercase {
+  text-transform: uppercase;
+}
+
+h2 {
+  font-weight: 300;
+}
+
+h1,
+.bold {
+  font-weight: 600;
+}
+
+main article {
+  font-size: 1.25em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.x-large {
+  font-size: x-large;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6
+.medium {
+  font-size: inherit;
+}
+
+.small {
+  font-size: small;
+}
+
+article h2 {
+  font-size: 1.5em;
+}
+
+/* Insert globe with meridians 🌐 unicode character before the languages navigation */
+.languages-nav::before {
+  content: '\01F310';
+}
+
+/*
+ * Recolor emoji @see Coyier, Chris. 2018[2022]. “{@link https://css-tricks.com/emojis-as-icons/ Emojis as Icons}.” Updated December 14, 2022.
+ */
+#primary_nav ul li:last-of-type a::after,
+.emoji-text::before {
+  color: transparent;
+  text-shadow: 0 0 var(--text-color);
+}
+
+/* Insert heart emoji ❤  followed by a non-breaking space for flow in the “Donate” button */
+#primary_nav ul li:last-of-type a::after {
+  --text-color: white;
+  content: "\00a0\2764";
+}
+
+.emoji-text::before {
+  padding-right: 0.25em;
+  padding-inline-end: 0.25em;
+}
+
+/* Custom bullets for unordered lists */
+ul {
+  /* Six-pointed star followed by two non-breaking spaces for alignment */
+  list-style: '\2736\00a0\00a0';
+  padding-left: var(--base-unit-2x);
+  padding-inline-start: var(--base-unit-2x);
+}
+
+/**
+ * Remove bullets and default padding from a list
+ */
+footer nav ul,
+.no-list-style {
+  list-style: none;
+  padding-left: 0;
+  padding-inline-start: 0;
+}

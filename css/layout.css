@@ -1,5 +1,333 @@
 /**
- * @file Defines styles for site layout
+ * @file Layout
  * @author Reuben L. Lillie <rlillie@loopnaz.org>
  * @since 2.0.0
  */
+
+/**
+ * Universal box sizing
+ * @see Mosley, Marie. 2010[2015]. “{@link https://css-tricks.com/box-sizing/ Box Sizing}.” _CSS-Tricks._ Updated on May 6, 2015.
+ */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/**
+ * Grid
+ */
+
+.grid {
+  display: grid;
+}
+
+.gap {
+  gap: var(--base-unit);
+}
+
+.small-gap {
+  gap: var(--base-unit-half);
+}
+
+body {
+  grid-template-rows: auto 1fr auto;
+  min-height: calc(100vh - var(--base-unit));
+}
+
+/* body, */
+#site_footer {
+  grid-template-columns: 1fr minmax(16em, calc(var(--paragraph-width, 66ch) * 2)) 1fr;
+}
+
+main {
+  width: calc(var(--paragraph-width) * 2);
+  max-width: 100%;
+}
+
+main article {
+  grid-template-columns: 1fr minmax(16em, calc(var(--paragraph-width, 66ch))) 1fr;
+}
+
+main article > * {
+  grid-column: 2;
+}
+
+main article {
+  grid-column: 1 / -1;
+}
+
+#legal_nav {
+  grid-row: 2;
+}
+
+main article p {
+  max-width: var(--paragraph-width);
+}
+
+#footer_nav {
+  justify-content: center;
+}
+
+/**
+ * Flexbox
+ */
+.flex {
+  display: flex;
+}
+
+#primary_nav, /* Smaller screens */
+.flex-column {
+  flex-direction: column;
+}
+
+/* Primary navigation links are centered and wrap across multiple lines on smaller screens */
+#primary_nav ul {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Breakpoint for larger screens */
+@media screen and (min-width: 900px) {
+  #primary_nav {
+    /* Logo and navigation links can fit on the same line */
+    flex-direction: row;
+    /* Logo are flush left and navigation links are flush right */
+    justify-content: space-between;
+  }
+}
+
+/**
+ * Margin
+ */
+
+/* Adjust default margin */
+.no-margin {
+  margin: 0;
+}
+
+#site_header {
+  margin: var(--base-unit-half);
+}
+
+article {
+  margin: var(--base-unit);
+}
+
+article header + h2,
+article p + p {
+  margin-top: 0;
+  margin-block-start: 0;
+}
+
+/* Double line margin before article headings, single line after */
+article h2:not(header + h2),
+article h3,
+article h4,
+article h5,
+article h6 {
+  margin-top: var(--base-unit-2x);
+  margin-block-start: var(--base-unit-2x);
+}
+
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  margin-bottom: 0;
+  margin-block-end: 0;
+}
+
+#footer_nav ul li {
+  margin-bottom: var(--base-unit);
+  margin-block-end: var(--base-unit);
+}
+
+article li,
+#footer_nav ul:not(.social) li {
+  margin-top: var(--base-unit);
+  margin-block-start: var(--base-unit);
+}
+
+#site_footer {
+  margin-top: var(--base-unit-2x);
+  margin-block-start: var(--base-unit-2x);
+  margin-right: var(--base-unit);
+  margin-inline-end: var(--base-unit);
+  margin-bottom: var(--base-unit);
+  margin-block-end: var(--base-unit);
+  margin-left: var(--base-unit);
+  margin-inline-start: var(--base-unit);
+}
+
+/**
+ * Padding
+ */
+
+#primary_nav ul li:last-of-type a {
+  padding-top: var(--base-unit-half);
+  padding-block-start: var(--base-unit-half);
+  padding-left: var(--base-unit-2x);
+  padding-inline-start: var(--base-unit-2x);
+  padding-bottom: var(--base-unit-half);
+  padding-block-end: var(--base-unit-half);
+  padding-right: var(--base-unit-2x);
+  padding-inline-end: var(--base-unit-2x);
+}
+
+#site_footer,
+nav.social {
+  padding-top: var(--base-unit);
+  padding-block-start: var(--base-unit);
+}
+
+/**
+ * Backgrounds
+ */
+
+body {
+  background-color: var(--background-color);
+}
+
+#primary_nav ul li:last-of-type a,
+#primary_nav ul li:last-of-type a,
+.accent-background {
+  background-color: var(--accent-color);
+}
+
+/**
+ * Borders
+ */
+
+#primary_nav ul li:last-of-type a,
+#primary_nav ul li:last-of-type a,
+.accent-background {
+  border-color: var(--accent-color);
+}
+
+#site_footer {
+  border-top: var(--border);
+  border-block-start: var(--border);
+}
+
+#site_footer h2 {
+  text-decoration-line: underline;
+  border-bottom: var(--border);
+  border-color: var(--text-color);
+}
+
+#site_footer h2 {
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 0.25em;
+}
+
+#footer_nav ul {
+  width: calc(571px - var(--base-unit-2x));
+  max-width: var(--full-width);
+}
+
+#footer_nav address {
+  text-align: center;
+}
+
+@media screen and (min-width: 571px) { /* Second column begins */
+  #site_footer h2 {
+    text-decoration-line: unset;
+    text-underline-offset: unset;
+    text-decoration-thickness: unset;
+    border-bottom: none;
+    border-color: unset;
+  }
+
+  #footer_nav address {
+    text-align: unset;
+  }
+
+  #footer_nav ul {
+    width: unset;
+    max-width: unset;
+  }
+
+  #footer_nav section:not(:first-of-type) {
+    width: max-content;
+    max-width: 256px;
+  }
+
+  #legal_nav,
+  .columns {
+    grid-column: 2;
+  }
+
+  .columns {
+    grid-template-columns: 256px repeat(auto-fit, minmax(min-content, 11em));
+  }
+}
+
+/* Display an element inline as well as any list item descendants */
+.inline,
+.inline ul,
+.inline li {
+  display: inline;
+}
+
+/**
+ * Links
+ */
+
+#primary_nav a {
+  text-decoration: none;
+}
+
+#primary_nav ul li a:focus,
+#primary_nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+#primary_nav ul li:last-of-type a:focus,
+#primary_nav ul li:last-of-type a:hover,
+.glow:focus,
+.glow:hover {
+  box-shadow: 0.125em 0.125em 1em var(--accent-color);
+}
+
+#primary_nav ul li:last-of-type a
+#primary_nav ul li:last-of-type a:focus,
+#primary_nav ul li:last-of-type a:hover {
+  color: white;
+}
+
+/**
+ * SVG
+ */
+svg {
+  /* Keep SVG from overflowing the viewport */
+  max-width: var(--full-width);
+  width: 100%;
+}
+
+.social {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+svg {
+  fill: currentColor;
+}
+
+.social a svg {
+  fill: var(--gray-500);
+}
+
+.social svg {
+  height: 1.25em;
+  width: 1.25em;
+}
+
+.social a svg:hover,
+.social a svg:focus {
+  fill: currentColor;
+}

@@ -1,5 +1,80 @@
 /**
- * @file Defines forms styles
+ * @file Forms
  * @author Reuben L. Lillie <rlillie@loopnaz.org>
  * @since 2.0.0
  */
+
+/* Use same font on form elements as the rest of the site */
+button,
+input,
+input[type=text],
+input[type=email],
+option,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* Keep the form from overflowing its container */
+form,
+fieldset {
+  max-width: 100%;
+}
+
+/* Remove browers styles for form elements */
+button,
+input,
+option,
+select,
+textarea {
+  border-radius: unset;
+  font-size: inherit;
+  line-height: inherit;
+  margin-bottom: var(--base-unit);
+  margin-block-end: var(--base-unit);
+}
+
+/* Use the same borders and colors from the rest of the site */
+input,
+select,
+textarea {
+  border: var(--border);
+  background-color: inherit;
+  color: inherit;
+}
+
+/* Enhance a form element’s border color on focus or hover */
+input:focus,
+input:hover,
+select:focus,
+select:hover,
+textarea:focus,
+textarea:hover {
+  border-color: var(--accent-color);
+}
+
+/* Make the button prominent */
+button {
+  background-color: var(--text-color);
+  border-color: var(--text-color);
+  border-style: solid;
+  color: var(--background-color);
+  cursor: pointer;
+  min-width: var(--base-unit-2x);
+  width: calc(var(--base-unit-3x) * 3);
+  max-width: 100%;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Recolor button on focus or hover */
+button:focus,
+button:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* Prevent resizing of the textarea */
+textarea {
+  resize: none;
+}

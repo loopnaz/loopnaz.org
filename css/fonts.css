@@ -5,3 +5,33 @@
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face `@font-face` on MDN}
  * @see Leatherman, Zach. 2019. {@link https://www.zachleat.com/web/css-tricks-web-fonts/lato/ “Developing a Robust Font Loading Strategy for CSS-Tricks.” June 26, 2019.}
  */
+
+/* Regular */
+@font-face {
+  font-family: Lato;
+  src: url(/fonts/lato/Lato-Regular-kern-latin.woff2) format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Bold */
+@font-face {
+  font-family: Lato;
+  src: url(/fonts/lato/Lato-Bold-kern-latin.woff2) format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Italic */
+@font-face {
+  font-family: Lato;
+  src: url(/fonts/lato/Lato-Italic-hint-all.woff2) format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Set the font family for the entire page */
+body {
+  font-family: Lato;
+}
