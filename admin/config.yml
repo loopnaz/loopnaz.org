@@ -8,9 +8,10 @@ local_backend: true
 # Allow Decap CMS to communicate with Git
 # @see https://decapcms.org/docs/backends-overview/#backend-configuration
 backend:
-  # Use Netlify to add editors without needing Git access
-  # @see https://decapcms.org/docs/git-gateway-backend/
-  name: git-gateway
+  # Use GitHub to login to Decap CMS
+  # @see https://decapcms.org/docs/github-backend/
+  name: github
+  repo: loopnaz/loopnaz.org
   # Git branch where published content is stored
   branch: main
   commit_messages:
@@ -94,7 +95,7 @@ collections:
       - label: Layout
         name: layout
         widget: string
-        required: true
+        required: false
         i18n: duplicate
         default: page
         hint: 'Override default layout (page) with another one in _layouts/'
@@ -158,7 +159,7 @@ collections:
         required: false
         i18n: duplicate
         hint: Add this page to one or more content collections
-        options: ['policies', 'discipleship', 'missions', 'youth', 'adults', 'children', 'local', 'district', 'global']
+        options: ['discipleship', 'missions', 'youth', 'adults', 'children', 'local', 'district', 'global', 'policy', 'resource']
       - label: 'Cover photo'
         name: image
         widget: object
@@ -236,7 +237,7 @@ collections:
         i18n: duplicate
         hint: Add this post to one or more content collections
         multiple: true
-        options: ['discipleship', 'missions', 'youth', 'adults', 'children', 'local', 'district', 'global']
+        options: ['discipleship', 'missions', 'youth', 'adults', 'children', 'local', 'district', 'global', 'policy', 'resource']
       - label: 'Cover photo'
         name: image
         widget: object
@@ -329,7 +330,7 @@ collections:
         multiple: true
         i18n: duplicate
         hint: Add this author to one or more lists
-        options: ['staff', 'pastor', 'board', 'volunteer']
+        options: ['staff', 'pastor', 'board', 'volunteer', 'external', 'district', 'region', 'general']
       - label: Headshot
         name: image
         widget: object
@@ -368,6 +369,7 @@ collections:
         widget: string
         i18n: duplicate
         hint: URL
+        ## URL validation
         ## Source - https://stackoverflow.com/a/17773849
         ## Posted by foufos, modified by community. See post 'Timeline' for change history
         ## Retrieved 2026-02-11, License - CC BY-SA 4.0
@@ -388,6 +390,15 @@ collections:
         i18n: duplicate
         hint: Used to save this link, all lowercase and separated by hyphens
         pattern: ['^[a-z0-9\s-]*$', 'lowercase-words-separated-by-hyphens']
+      - label: Tags
+        label_singular: Tag
+        name: tags
+        widget: select
+        multiple: true
+        required: false
+        i18n: duplicate
+        hint: Add this page to one or more content collections
+        options: ['discipleship', 'missions', 'youth', 'adults', 'children', 'local', 'district', 'global', 'policy', 'resource']
       - label: Navigation
         name: nav
         widget: object
