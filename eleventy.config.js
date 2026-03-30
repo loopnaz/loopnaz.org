@@ -76,6 +76,8 @@ export default async eleventyConfig => {
    */
   eleventyConfig.addPassthroughCopy('admin')
   eleventyConfig.addPassthroughCopy('css')
+  eleventyConfig.addPassthroughCopy('js')
+  eleventyConfig.addPassthroughCopy('_data/geojson')
   eleventyConfig.addPassthroughCopy('favicons')
   eleventyConfig.addPassthroughCopy('fonts')
 }

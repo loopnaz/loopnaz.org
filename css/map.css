@@ -1,0 +1,76 @@
+/**
+ * @file Map styles
+ * @author Reuben L. Lillie <rlillie@loopnaz.org>
+ * @since 2.0.0
+ * @see {@link https://leafletjs.com/reference.html Leaflet Documention}
+ */
+
+/* Set dimensions for Leaflet map container */
+#map {
+  height: 512px;
+  max-height: 80vh;
+}
+
+/* Defer to Leaflet styles for links */
+#map a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#map a:not([role=button]):focus,
+#map a:not([role=button]):hover {
+  text-decoration: underline;
+}
+
+/* Make the map attribution smaller */
+.leaflet-control-attribution.leaflet-control {
+  font-size: xx-small;
+}
+
+/* Scope to Leaflet controls for relative units */
+.leaflet-control,
+.leaflet-control * {
+  all: unset;
+  box-sizing: border-box;
+}
+
+/* Redefine conflicting styles from /forms.css */
+.leaflet-control {
+  font-family: var(--leaflet-font, "Helvetica Neue", Arial, sans-serif);
+  font-size: 13px;
+  line-height: 1;
+  color: initial;
+  background: initial;
+}
+
+.leaflet-control:focus,
+.leaflet-control:hover {
+  cursor: pointer;
+}
+
+.leaflet-control.tile-switcher {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Restore basic interactive element behavior */
+.leaflet-control button {
+  all: unset;
+  align-items: center;
+  padding: 8px 10px;
+}
+
+/* Mimic Leaflet zoom control */
+.leaflet-control.tile-switcher button:first-of-type {
+  border-bottom: 1px solid #ccc;
+}
+
+.leaflet-control.tile-switcher {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 4px;
+}
+
+.leaflet-control.tile-switcher a:hover,
+.leaflet-control.tile-switcher button:hover {
+  background-color: #f4f4f4;
+}

@@ -29,6 +29,7 @@ export function render(data) {
     content,
     faviconPath,
     fontScript,
+    hasMap,
     geojson,
     gradients,
     i18n: {defaultLanguage},
@@ -67,6 +68,13 @@ export function render(data) {
 
   /** @type {string[]|null} List of tags */
   var tagList = tags ? tags.map(tag => tag).join(' ') : null
+
+  /** @type {string} Leaflet scripts */
+  var leaflet = hasMap
+    ? `<!--Leaflet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@2.0.0-alpha.1/dist/leaflet.css" crossorigin>
+    <script type="module">${this.fileToString('js/leaflet.js')}</script>`
+    : `No Leaflet map on ${page.fileSlug}`
 
   /**
    * Lists other translations available for this content
@@ -178,7 +186,7 @@ export function render(data) {
   <head>
     <title>${title}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     ${this.fileExists(faviconPath)
       ? `<!--favicons-->
         ${this.fileToString(faviconPath)}`
@@ -249,6 +257,7 @@ export function render(data) {
         ${this.fileToString('css/typography.css')}
         ${this.fileToString('css/forms.css')}
         ${this.fileToString('css/a11y.css')}
+        ${this.fileToString('css/map.css')}
       `)}
     </style>
     ${this.fileExists(fontScript)
@@ -258,6 +267,7 @@ export function render(data) {
         </script>`
       : `<!--No file at ${fontScript}-->`
     }
+    ${leaflet}
     <!--Zeffy donation form script-->
     <script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js"></script>
   </head>

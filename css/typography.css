@@ -39,7 +39,10 @@ h2 {
   font-weight: 300;
 }
 
-h1,
+h1 {
+  font-weight: normal;
+}
+
 .bold {
   font-weight: 600;
 }
